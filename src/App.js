@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
-function App() {
+//react functional component
+const Person = (props)=>{
+  return (
+    <>
+    <h2>Employee Details</h2>
+    <p> Name: {props.name}</p>
+    <p>Age: {props.age}</p>
+    <p>City: {props.city}</p>
+    </>
+  )
+} 
+
+const Counter = ()=>{
+  const [count, setCount]= useState(0);
+  return(
+     <>
+      <button onClick={()=>setCount((preCount)=>preCount+1)}>+</button>
+       <h3>{count}</h3>
+       <button onClick={()=>setCount((preCount)=>preCount-1)}>-</button>
+     </>
+  )
+}
+
+const App=() =>{
+  const name = 'Raheel'
+  const isLogin = false;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1> Hello World! </h1>
+      <p> Welcome {isLogin ? name: <>guest</>}.</p>
+      <Person name='raheel' age='44' city={'peshawar'}/>
+      <Counter/>
     </div>
   );
 }
